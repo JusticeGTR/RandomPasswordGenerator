@@ -29,7 +29,7 @@ The finished page:
 https://github.com/JusticeGTR/RandomPasswordGenerator
 
 ## Visuals
-![Portfolio webpage](https://github.com/JusticeGTR/HW2/blob/main/assets/images/Screenshot.png)
+![Portfolio webpage](https://github.com/JusticeGTR/RandomPasswordGenerator/blob/main/assets/images/Screenshot%20(64).png)
 
 ## Usage
 
