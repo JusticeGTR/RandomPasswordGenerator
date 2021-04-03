@@ -8,118 +8,119 @@ function writePassword() {
   //var passwordSize = 0;
   var passwordSize = parseInt(prompt("How long would you like your password to be?:", "It must be between 8 and 128 characters long"));
 
-console.log(typeof passwordSize)
-console.log(passwordSize);
+  console.log(typeof passwordSize)
+  console.log(passwordSize);
 
-//how to deal with canceling out of the first prompt to go back to index?
+  //how to deal with canceling out of the first prompt to go back to index?
   // if(passwordSize === null || passwordSize === "" || passwordSize === "It must be between 8 and 128 characters long") {
   //   passwordText = "Canceled";
   // }
 
   //setting limits to the password size and type
-  if(isNaN(passwordSize)){
+  if (isNaN(passwordSize)) {
     alert("Please enter a number for the password length")
     writePassword()
-  } 
+  }
 
   if (passwordSize < 8) {
-      alert("Password must be longer than 8 characters!")
-      writePassword()
-      }
+    alert("Password must be longer than 8 characters!")
+    writePassword()
+  }
 
-  if(passwordSize > 128) {
-      alert("Password must be shorter than 128 characters!")
-      writePassword()
-      } 
-  
-console.log(passwordSize)
+  if (passwordSize > 128) {
+    alert("Password must be shorter than 128 characters!")
+    writePassword()
+  }
 
-//a place to store the user's answers
-var userPassword = {
-  pLength: passwordSize,
-  isSpChar: true,
-  isNumber: true,
-  isUpperCase: true,
-  isLowerCase:true
-}
+  console.log(passwordSize)
 
-//storing the user's answers in the object
-if(confirm("Would you like to include special characters?") === true) {
-  userPassword.isSpChar = true;
-} else {
-  userPassword.isSpChar = false;
-}
+  //a place to store the user's answers
+  var userPassword = {
+    pLength: passwordSize,
+    isSpChar: true,
+    isNumber: true,
+    isUpperCase: true,
+    isLowerCase: true
+  }
 
-if (confirm("Would you like to include numbers?") === true) {
-  userPassword.isNumber = true;
-} else {
-  userPassword.isNumber = false;
-}
+  //storing the user's answers in the object
+  if (confirm("Would you like to include special characters?") === true) {
+    userPassword.isSpChar = true;
+  } else {
+    userPassword.isSpChar = false;
+  }
 
-if (confirm("Would you like to use uppercase letters?") === true) {
-  userPassword.isUpperCase = true;
-} else {
-  userPassword.isUpperCase = false;
-}
+  if (confirm("Would you like to include numbers?") === true) {
+    userPassword.isNumber = true;
+  } else {
+    userPassword.isNumber = false;
+  }
 
-if (confirm("Would you like to use lowercase letters?") === true) {
-  userPassword.isLowerCase = true;
-} else {
-  userPassword.isLowerCase = false;
-}
+  if (confirm("Would you like to use uppercase letters?") === true) {
+    userPassword.isUpperCase = true;
+  } else {
+    userPassword.isUpperCase = false;
+  }
 
-console.log(userPassword)
+  if (confirm("Would you like to use lowercase letters?") === true) {
+    userPassword.isLowerCase = true;
+  } else {
+    userPassword.isLowerCase = false;
+  }
 
-//making arrays of all password character options and using user input from the object to determine what options are desired.
-//this is where it's breaking down currently. 
-var numbersArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var symbolsArr = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "\]", "^", "_", "`", "{", "|", "}", "~"];
-var upperCaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var lowerCaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+  console.log(userPassword)
 
-var passwordArr = [];
+  //making arrays of all password character options and using user input from the object to determine what options are desired.
+  //this is where it's breaking down currently. 
+  var numbersArr = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  var symbolsArr = ["!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "\]", "^", "_", "`", "{", "|", "}", "~"];
+  var upperCaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+  var lowerCaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-if(userPassword.isSpChar === true) {
-  passwordArr += symbolsArr;
-}
+  var passwordArr = [];
 
-if(userPassword.isNumber === true) {
-  passwordArr += numbersArr;
-}
+  if (userPassword.isSpChar === true) {
+    passwordArr += symbolsArr;
+  }
 
-if(userPassword.isUpperCase === true) {
-  passwordArr += upperCaseArr;
-}
+  if (userPassword.isNumber === true) {
+    passwordArr += numbersArr;
+  }
 
-if(userPassword.isLowerCase === true) {
-  passwordArr += lowerCaseArr;
-}
+  if (userPassword.isUpperCase === true) {
+    passwordArr += upperCaseArr;
+  }
 
-console.log(passwordArr);
+  if (userPassword.isLowerCase === true) {
+    passwordArr += lowerCaseArr;
+  }
 
-//creating the random generator to make the actual password based on desired length and all options from the arrays chosen
-function generatePassword(passwordArr) {
+  console.log(passwordArr);
 
-for(var i = 0; i <= passwordSize; i++) {
-var finalPassword = "";
-passwordArr[Math.floor(Math.random()*passwordArr.length)]
-finalPassword.concat(passwordArr[i])
-}
-console.log(finalPassword)
-// return finalPassword
-}
-//turning the generated password into a value and putting it on the page?
-  passwordText.value = finalPassword;
 
-return
+  //creating the random generator to make the actual password based on desired length and all options from the arrays chosen
+  function generatePassword() {
+    password = "";
+    for (var i = 0; i <= passwordSize; i++) {
+      passwordArr[Math.floor(Math.random() * passwordArr.length)]
+      password += (passwordArr[i])
+    }
+    // return 
+    return password
+  }
+  console.log(password)
+  //turning the generated password into a value and putting it on the page?
+  passwordText.value = password;
+
+  return
 }
 
 // console.log(writePassword())
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-// textSpace = document.getElementById("#password")
-// textSpace.textContent = finalPassword
+textSpace = document.getElementById("#password")
+textSpace.textContent = password
 
 //pseudo code first
 //google how to generate a random character
@@ -190,15 +191,15 @@ generateBtn.addEventListener("click", writePassword);
 //   var upperCase = confirm(
 //     "Do you want to include uppercase letters? ok for yes, cancel for no"
 //   );
-  
+
 //   if (upperCase === true) {
 //     allChoices += upperCase;
 //   }
-  
+
 //   var special = confirm(
 //     "Do you want to include special characters? ok for yes, cancel for no"
 //   );
-  
+
 //   if (special === true) {
 //     allChoices += special;
 //   }
@@ -213,7 +214,7 @@ generateBtn.addEventListener("click", writePassword);
 //       password += allChoices.charAt(Math.floor(Math.random() * length));
 //    }
 //    return password;
-  
+
 // }
 // // Add event listener to generate button
 // generateBtn.addEventListener("click", writePassword);
