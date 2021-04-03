@@ -80,19 +80,19 @@ var lowerCaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
 var passwordArr = [];
 
 if(userPassword.isSpChar === true) {
-  passwordArr.concat(symbolsArr);
+  passwordArr += symbolsArr;
 }
 
 if(userPassword.isNumber === true) {
-  passwordArr.concat(numbersArr);
+  passwordArr += numbersArr;
 }
 
 if(userPassword.isUpperCase === true) {
-  passwordArr.concat(upperCaseArr);
+  passwordArr += upperCaseArr;
 }
 
 if(userPassword.isLowerCase === true) {
-  passwordArr.concat(lowerCaseArr);
+  passwordArr += lowerCaseArr;
 }
 
 console.log(passwordArr);
@@ -106,12 +106,12 @@ passwordArr[Math.floor(Math.random()*passwordArr.length)]
 finalPassword.concat(passwordArr[i])
 }
 console.log(finalPassword)
-return finalPassword
+// return finalPassword
 }
 //turning the generated password into a value and putting it on the page?
   passwordText.value = finalPassword;
 
-// return
+return
 }
 
 // console.log(writePassword())
@@ -160,3 +160,60 @@ generateBtn.addEventListener("click", writePassword);
 // }
 
 // random function to get the arr upto the length of the password
+
+
+// Assignment Code
+// var generateBtn = document.querySelector("#generate");
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
+//   passwordText.value = password;
+// }
+// function generatePassword() {
+//   var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+//   var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+//   var special = "!@#$%^&*()-+<>";
+//   var num = "1234567890";
+//   var allChoices = "";
+//   var length = prompt("Enter a character amount between 8-128");
+//   if (length < 8 || length > 128) {
+//     alert("Password needs to be between 8 and 128 characters");
+//     return;
+//   }
+//   var lowerCase = confirm(
+//     "Do you want to include lowercase letters? ok for yes, cancel for no"
+//   );
+//   if (lowerCase === true) {
+//     allChoices += lowerCase;
+//   }
+//   var upperCase = confirm(
+//     "Do you want to include uppercase letters? ok for yes, cancel for no"
+//   );
+  
+//   if (upperCase === true) {
+//     allChoices += upperCase;
+//   }
+  
+//   var special = confirm(
+//     "Do you want to include special characters? ok for yes, cancel for no"
+//   );
+  
+//   if (special === true) {
+//     allChoices += special;
+//   }
+//   var num = confirm(
+//     "Do you want to include numbers? ok for yes, cancel for no"
+//   );
+//   if (num === true) {
+//     allChoices += num;
+//   }
+//   var length = allChoices.length;
+//    for ( var i = 0; i < length; i++ ) {
+//       password += allChoices.charAt(Math.floor(Math.random() * length));
+//    }
+//    return password;
+  
+// }
+// // Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword);
